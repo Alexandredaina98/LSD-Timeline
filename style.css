@@ -1,0 +1,231 @@
+body {
+  margin: 0;
+  padding: 0;
+  perspective: 400px;
+  overflow: hidden;
+  background: rgb(255, 14, 14);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 99.99%; /* Should be `0` but Safari needs this! (BUG #1) */
+  right: 0;
+}
+
+#background-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+.overlay-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.2;
+  z-index: 1;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;*/
+  pointer-events: none; 
+
+}
+#adv{
+  margin: 0;
+  padding: 0;
+  background: rgba(0,0,0, 0);
+  color: #0d0;
+  position: relative;
+  top: 750px;
+  left: 150px;
+}
+.wrapper {
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transform: rotateX(40deg);
+}
+
+.slides {
+  perspective: 313px;
+  padding: 50px 0px;
+  margin-bottom: 500px;
+  width: 100%;
+  height: 400px;
+  transform-style: preserve-3d;
+  overflow: auto;
+  transform: translate(-50%, -0%);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+.slide {
+  position: relative;
+  margin-left: 150px;
+  width: 750px;
+  height: 500px;
+  transform: rotateX(-40deg);
+  transform-origin: 0 0;
+}
+.title {
+  color: #fff;
+  font-size: 275%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+}
+
+.fit{
+  height: 400px;
+  width: 600px;
+}
+
+.fit_in_slide{
+  width: 80vw;
+  height: 80vh;
+}
+#container3D canvas{
+ height : 50%;
+ width : 50%;
+}
+
+#container3D{
+ 
+
+  position: absolute;
+  top:50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.fu{
+  
+  transform-style: preserve-3d;
+  overflow: auto;
+  transform: translate(-50%, -0%);
+  position: fixed;
+  top: 50vw;
+  left: 10%;
+  z-index: 2;
+}
+.fu:hover{
+ background-color: blue;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 200px; /* Location of the box */
+  top: 20vw;
+  left: 12%;
+  width:30vw;
+  height: 30vh;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position:fixed;
+}
+.modal-content img {
+  display: inline-block; /* Display images next to each other */
+  margin-right: 0px; /* Optional margin to create spacing between the images */
+}
+#htext{
+  position: relative;
+  top: -20vh;
+  display: inline-block; /* Display images next to each other */
+  margin-right: 0px; /* Optional margin to create spacing between the images */
+  color:#0d0;
+  width:30vw;
+  overflow-wrap: anywhere;
+}
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* colours
+----------------------------------------- */
+
+.slide:nth-child(1) {
+  background: hsla(0, 70%, 50%, 0);
+}
+.slide:nth-child(2) {
+  background: hsla(45, 70%, 50%, 0);
+}
+.slide:nth-child(3) {
+  background: hsla(90, 70%, 50%, 0);
+}
+.slide:nth-child(4) {
+  background: hsla(135, 70%, 50%, 0);
+}
+.slide:nth-child(5) {
+  background: hsla(180, 70%, 50%, 0);
+}
+.slide:nth-child(6) {
+  background: hsla(215, 70%, 50%, 0);
+}
+
+
+
+/* Debugging
+----------------------------------------- */
+
+label {
+  font: 100%/1.5 Arial;
+  background: #fff;
+  padding: .25em .5em;
+  border-radius: 3px;
+  position:fixed;
+  z-index: 1;
+  margin: .5em
+}
+.wrapper {
+  transition: .5s transform;
+}
+.slide {
+  transition: .5s 1s transform;
+}
+.slides {
+  box-shadow: 0 0 0 1px #0c0;
+  transition: .5s 2s width;
+}
+#debug {
+  position: absolute;
+  top: -1000em;
+}
+#debug:checked ~ .wrapper {
+  transform: none;
+  transition: .5s 2s transform;
+}
+#debug:checked ~ .wrapper .slide {
+  transform: none;
+  transition: .5s 1s transform;
+}
+#debug:checked ~ .wrapper .slides {
+  width: 600px;
+  transition: .5s width;
+}
+#debug:not(:checked) + label::after {
+  content: ' 2D';
+}
+#debug:checked + label::after {
+  content: ' 3D';
+}
