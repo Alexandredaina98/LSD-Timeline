@@ -1,110 +1,83 @@
-<!DOCTYPE  html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vertical Card Slider</title>
     <style>
-      @font-face {
-      font-family: 'Custom';
-      src: url('Ac437_ACM_VGA_8x14.ttf') format('truetype'); /* Replace 'font.ttf' with the actual path to your font file */
-  }
-      #adv {
-          font-size: 200px;
-          font-family: 'Custom', Arial;
+        @font-face {
+        font-family: 'Custom';
+        src: url('Ac437_ACM_VGA_8x14.ttf') format('truetype'); /* Replace 'font.ttf' with the actual path to your font file */
+    }
+    .overlay-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            z-index: 1;
+            /* Semi-transparent background 
+            display: flex;
+            justify-content: center;
+            align-items: center;*/
+            pointer-events: none; /* Allows interaction with elements beneath the overlay */
+
         }
-      button {
-          background-color: rgba(255, 255, 255, 0.1);
-          color: chartreuse;
-          font-size: large;
-          font-family: 'Custom', Arial;
-      }
-      #htext{
-        font-size: large;
-          font-family: 'Custom', Arial;
-}
-  </style>
-    <link rel="stylesheet" href="style.css">
-    <script type="module" src="js.js" defer></script>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: black;
+            
+        }
+        .container {
+            text-align: center;
+        }
+        button {
+            padding: 15px 30px;
+            width : 50vw;
+            height: 50vh;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: chartreuse;
+            font-size: large;
+            font-family: 'Custom', Arial;
+        }
+        button:hover {
+            background-color: rgba(255, 255, 255, 0.3); /* Button color on hover */
+        }
+        button:active {
+            background-color: #1f618d; /* Button color on click */
+        }
+    </style>
+    <script> document.getElementById("delayedButton").addEventListener("click", function () {
+                     // Disable the overlay-panel during the delay
+                     // Disable the button during the delay
+                     document.getElementById("bar").disabled = false;
+                     // Add a 3-second delay
+                     setTimeout(function () {
+                         // Re-enable the button after the delay
+                         // Perform the desired action here (e.g., navigate to a new page)
+            window.location.href = "index.html";
+          }, 3000); // 3000 milliseconds = 3 seconds
+        });</script>
 </head>
 <body>
-  <video id="background-video" src="videos/background-1.mp4" autoplay loop></video>
-  <input id="debug" type="checkbox">
-<label for="debug">Debug: Transition to </label>
-<div class="overlay-panel">
-  <img class="overlay-panel" src="static.gif">
-</div>
-
-<button class="fu" id="button1" onclick="playAudio()">?</button>
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
+    <div class="overlay-panel">
+        <img class="overlay-panel" src="static.gif">
+        <!-- Content for the overlay panel (e.g., loading spinner) -->
+    </div>
+    <div class="container">
+        <a href="page.html">
+            <button id="delayedButton"><p>Case File : Lysergic acid diethylamide</p>
+                <p>Clearence Level : 3</p>
+            </button>
+        </a>
+        <div class="bar"> <!-- Content for the overlay panel (e.g., loading spinner) <img class="bar" src="loading-bar.gif">  -->
+            <!-- Content for the overlay panel (e.g., loading spinner) -->
+        </div>
+       
+    </div>
     
-    <img class="fit" id="hidden" src="videos/mkultra photo.png">
-    <p class="fit" id="htext">L</p>
-  </div>
-
-</div>
-
-
-<div class="wrapper">
-  
-  <div class="slides">
-    <div class="slide">
-      <div id="container3D"></div>
-      <p id="adv">Adventure</p>
-    </div>
-    <div class="slide">
-      <div id="container3D7"></div>
-    </div>
-    <div class="slide">
-      <img class="fit_in_slide" src="animations/1.gif">
-    </div>
-    <div class="slide">
-      <div id="container3D3"></div>
-    </div>
-    <div class="slide">
-      <!--animation slide number 1/bikeride-->
-      <img class="fit_in_slide" src="animations/Illustration_sans_titre 5.gif">
-    </div>
-   
-    <div class="slide" id="P1">
-      <div id="container3D2"></div>
-    </div>
-    <div class="slide">
-      <div id="container3D4"></div>
-    </div>
-    <div class="slide">
-      <img class="fit_in_slide" src="animations/2.gif">
-    </div>
-    <div class="slide">
-      <div id="container3D8"></div>
-    </div>
-    <div class="slide">
-      <img class="fit_in_slide" src="animations/3.gif">
-    </div>
-    <div class="slide">
-      <div id="container3D5"></div>
-    </div>
-    <div class="slide">
-      <img class="fit_in_slide" src="animations/4.gif">
-    </div>
-    <div class="slide">
-      <div id="container3D6"></div>
-    </div>
-    <div class="slide">
-      <img class="fit_in_slide" src="animations/5.gif">
-    </div>
-   
-   
-    
-    
-   
-   
-    
-  </div>
-</div>
 </body>
+
 </html>
